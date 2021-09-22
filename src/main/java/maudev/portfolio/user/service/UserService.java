@@ -9,6 +9,8 @@ public interface UserService {
     public List<User> getAllUsers();
     public User getUser(Long id);
 
+    public User getUserActive(Long id);
+
     public User createUser(User user);
     public User updateUser(User user);
     public User deleteUser(Long id);

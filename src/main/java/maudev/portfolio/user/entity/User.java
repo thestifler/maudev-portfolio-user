@@ -39,5 +39,6 @@ public class User {
     @Column(name = "use_createat")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createat;
+
     
 }

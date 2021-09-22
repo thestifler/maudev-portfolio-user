@@ -1,6 +1,6 @@
 package maudev.portfolio.user.controller;
 
-import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,16 +25,18 @@ public class UserController {
     private  UserService userService;
 
 
-    @GetMapping
-    public ResponseEntity<List<User>> getAllUser(){
-        List<User> users = userService.getAllUsers();
-        if (users.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<User> getUser(@PathVariable(name = "id", required = false) Long id){
+        User user = userService.getUserActive(id);
 
-        return ResponseEntity.ok(users);
+            if (user == null) {
+                return ResponseEntity.noContent().build();
+            }
+  
+        return ResponseEntity.ok(user);
     }
 
+    
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user){
 

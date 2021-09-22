@@ -64,6 +64,20 @@ public class UserServiceImpl implements UserService{
 
         return userRepository.save(userDB);
     }
+
+    @Override
+    public User getUserActive(Long id) {
+        User userDB = userRepository.findByIdAndStatus(id, "CREATED");
+        
+        if(userDB == null){
+            return null;
+        }
+
+        return userDB;
+    }
+
+    
+
     
     
 }
